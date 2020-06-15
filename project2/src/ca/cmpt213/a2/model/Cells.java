@@ -1,25 +1,19 @@
 package ca.cmpt213.a2.model;
 
+import java.util.ArrayList;
+
 public class Cells {
-    public enum State {VISITED, UNVISITED}
-    public enum Occupancy {S, M, E}
-    public enum Status {N ,E, S, W}
-    private Status check;
-    private State state;
-    private Occupancy occupancy;
+    public boolean visited;
+    public boolean wall;
+    public ArrayList<Cells> neighbours;
+
 
     public Cells(){
-        this.state = State.UNVISITED;
-        this.occupancy = Occupancy.E;
+        this.visited=false;
+        wall=true;
+        neighbours=new ArrayList<Cells>();
+
     }
-
-    public Cells(Occupancy occupancy1){
-        this.state = State.UNVISITED;
-        this.occupancy = occupancy1;
-    }
-
-
-
 
 
 }
