@@ -26,6 +26,7 @@ public class screen {
         options menu = new options(HEADER, MENU);
         menu.displayTitle(counter);
         menu.displayMainMenu();
+        graph game = new graph();
         menu.displayOptions(demons, taken, stayed);
 
 
