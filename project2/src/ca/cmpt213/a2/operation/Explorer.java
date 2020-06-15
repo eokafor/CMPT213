@@ -1,17 +1,18 @@
 package ca.cmpt213.a2.model;
 
 
-public class explorer {
+public class Explorer {
 
    Stack path=new Stack();
    Cell current;
 
 
-    public explorer(Cell current) {
+    public Explorer(Cell current) {
         this.current= current;
+        pathexplorer();
 
     }
-    public pathexplorer(){
+    private void pathexplorer(){
         current.visited=true;
         path.push(current);
         while(!path.empty){
@@ -23,7 +24,7 @@ public class explorer {
                 } }
             for(Cell neighbour:current.neighbour){
                 if(!neighbour.visited) {
-                    //remove wall stufff.
+                    wall=false;
                     neighbour.visited=true;
                     path.push(neighbour);
                 } }
