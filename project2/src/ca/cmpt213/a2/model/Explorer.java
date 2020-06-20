@@ -21,10 +21,7 @@ public class Explorer {
             for(Cells neighbour:current.neighbours){
                 if(!neighbour.visited) {
                     path.push(current);
-                    break;
-                } }
-            for(Cells neighbour:current.neighbours){
-                if(!neighbour.visited) {
+
                     current.wall=false;
                     neighbour.visited=true;
                     path.push(neighbour);
