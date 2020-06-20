@@ -15,8 +15,13 @@ public class graph {
         grid = new maze();
         cols = grid.getNUM_COLS();
         rows = grid.getNUM_ROWS();
+        for(int x = 0; x < cols+2; x++){
+            System.out.print("#\t");
+        }
+        System.out.println();
 
         for(int x = 0; x < rows; x++){
+            System.out.print("#\t");
             for(int y = 0; y < cols; y++){
                 newCell = grid.getCell(x,y);
                 if(newCell.wall == true)
@@ -27,9 +32,15 @@ public class graph {
                 {
                     System.out.print("." + "\t");
                 }
+
             }
+            System.out.print('#');
             System.out.println();
         }
+        for(int x = 0; x < cols+2; x++){
+            System.out.print("#\t");
+        }
+        System.out.println();
 
     }
 
