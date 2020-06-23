@@ -17,15 +17,11 @@ public class Explorer {
         this.cells=cells;
         pathexplorer();
 
-
         removeOpenCells();
         removeLockedCells();
 
-
-
         CornerCleaner();
         openPath();
-
 
     }
 
@@ -45,7 +41,8 @@ public class Explorer {
                     path.push(neighbour);
                     break;
 
-                } }
+                }
+            }
         }
     }
     private void removeOpenCells(){

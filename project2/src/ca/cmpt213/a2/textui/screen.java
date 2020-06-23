@@ -14,60 +14,70 @@ public class screen {
 
     private static final String[] MENU = {"#: Wall", "@: You (a hero)", "!: Monster", "$: Power", ".: Unexplored space"};
 
+    static graph game = new graph();
+    static boolean alreadyIn = true;
+    static int taken = 0;
+    static int stayed = 3;
+    static String input = "";
     public static void main(String[] args) {
         int counter = 1;
         int demons = 3;
-        int stayed = 3;
+
         int ability = 1;
-        int taken = 0;
-        boolean alreadyIn = true;
+
+
 
         String x;
         options menu = new options(HEADER, MENU);
         menu.displayTitle(counter);
         menu.displayMainMenu();
-        //graph game = new graph();
+        game.newGraph();
         menu.displayOptions(demons, taken, stayed);
-        String input = "";
+
 
         while (alreadyIn) {
             input = menu.getUserInput();
             switch (input) {
                 case "m":
                     counter++;
-                    options menu1 = new options(HEADER1, MENU);
-                    menu1.displayTitle(counter);
-                    graph game = new graph();
+                    menu = new options(HEADER1, MENU);
+                    menu.displayTitle(counter);
                     System.out.println();
-                    //game.displayGraph();
-                    menu1.displayOptions(demons, taken, stayed);
+                    game.displayGraph();
+                    System.out.println();
+                    menu.displayOptions(demons, taken, stayed);
                     break;
                 case "?":
                     counter++;
-                    options menu2 = new options(HEADER3, MENU);
-                    menu2.displayTitle(counter);
-                    menu2.displayOptions(demons, taken, stayed);
+                    menu = new options(HEADER3, MENU);
+                    menu.displayTitle(counter);
+                    menu.displayMainMenu();
+                    menu.displayOptions(demons, taken, stayed);
                     break;
                 case "c":
                     counter++;
-                    options menu3 = new options(HEADER7, MENU);
-                    menu3.displayTitle(counter);
-                    menu3.displayOptions(demons, taken, stayed);
+                    menu = new options(HEADER7, MENU);
+                    menu.displayTitle(counter);
+                    menu.displayOptions(demons, taken, stayed);
                     break;
                 case "w":
-                    moveUp();
+                    int a = 1;
+                    moveUp(a);
                     break;
                 case "a":
-                    moveLeft();
+                    int b = 2;
+                    moveLeft(b);
                     break;
                 case "s":
-                    moveDown();
+                    int c = 3;
+                    moveDown(c);
                     break;
                 case "d":
-                    moveRight();
+                    int d = 4;
+                    moveRight(d);
                     break;
                 case "q":
-                    alreadyIn = false;
+                    end();
                     counter = 0;
                     break;
                 default:
@@ -78,20 +88,117 @@ public class screen {
         }
     }
 
-    private static void moveUp() {
+    private static void moveUp(int s) {
+        int d = game.motion(s);
+        if (d == 1){
+            System.out.println("Invalid move: you cannot move through walls");
 
+        }
+        else if(d == 2)
+        {
+            if(taken == 0)
+            {
+                System.out.println("Im sorry, you've been eaten!");
+                end();
+            }
+            else
+            {
+                taken--;
+                stayed--;
+
+            }
+
+        }
+        else if(d == 3)
+        {
+            taken++;
+        }
     }
 
-    private static void moveLeft() {
+    private static void moveLeft(int q) {
+        int d = game.motion(q);
+        if (d == 1){
+            System.out.println("Invalid move: you cannot move through walls");
 
+        }
+        else if(d == 2)
+        {
+            if(taken == 0)
+            {
+                System.out.println("Im sorry, you've been eaten!");
+                end();
+            }
+            else
+            {
+                taken--;
+                stayed--;
+
+            }
+
+        }
+        else if(d == 3)
+        {
+            taken++;
+        }
     }
 
-    private static void moveDown() {
+    private static void moveDown(int v) {
+        int d = game.motion(v);
+        if (d == 1){
+            System.out.println("Invalid move: you cannot move through walls");
 
+        }
+        else if(d == 2)
+        {
+            if(taken == 0)
+            {
+                System.out.println("Im sorry, you've been eaten!");
+                end();
+            }
+            else
+            {
+                taken--;
+                stayed--;
+
+            }
+
+        }
+        else if(d == 3)
+        {
+            taken++;
+        }
     }
 
-    private static void moveRight() {
+    private static void moveRight(int o) {
+        int d = game.motion(o);
+        if (d == 1){
+            System.out.println("Invalid move: you cannot move through walls");
 
+        }
+        else if(d == 2)
+        {
+            if(taken == 0)
+            {
+                System.out.println("Im sorry, you've been eaten!");
+                end();
+            }
+            else
+            {
+                taken--;
+                stayed--;
+
+            }
+
+        }
+        else if(d == 3)
+        {
+            taken++;
+        }
+    }
+
+    public static void end()
+    {
+        alreadyIn = false;
     }
 
 
