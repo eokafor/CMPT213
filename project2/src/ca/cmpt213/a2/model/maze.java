@@ -8,18 +8,18 @@ public class maze {
 
     private int NUM_ROWS;
     private int NUM_COLS;
-    private Cells cell[][];
+    private Cell cell[][];
 
 
 
     public maze() {
         this.NUM_ROWS = 18;
         this.NUM_COLS = 13;
-        cell = new Cells[NUM_ROWS][NUM_COLS];
+        cell = new Cell[NUM_ROWS][NUM_COLS];
 
         for(int i=0;i<NUM_ROWS;i++) {
             for (int j = 0; j <NUM_COLS; j++) {
-                cell[i][j]= new Cells();
+                cell[i][j]= new Cell();
             }
         }
         for(int i=0;i<NUM_ROWS;i++) {
@@ -42,7 +42,7 @@ public class maze {
         Random rand =new Random();
         int row=rand.nextInt(18);
         int column=rand.nextInt(13);
-        Explorer explorer = new Explorer(cell[row][column]);
+        Explorer explorer = new Explorer(cell[row][column],cell);
 
     }
 
@@ -54,7 +54,7 @@ public class maze {
         return NUM_COLS;
     }
 
-    public Cells getCell(int i, int j){
+    public Cell getCell(int i, int j){
         return cell[i][j];
     }
 

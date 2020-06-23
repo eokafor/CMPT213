@@ -1,6 +1,6 @@
 package ca.cmpt213.a2.textui;
 
-import ca.cmpt213.a2.model.Cells;
+import ca.cmpt213.a2.model.Cell;
 import ca.cmpt213.a2.model.maze;
 
 public class graph {
@@ -8,7 +8,7 @@ public class graph {
     maze grid;
     int cols;
     int rows;
-    Cells newCell;
+    Cell newCell;
 
     public graph(){
 
