@@ -41,10 +41,7 @@ public class graph {
             System.out.print("#\t");
         }
         System.out.println();
-
+        
     }
-
-
-
 
 }

@@ -42,7 +42,7 @@ public class options {
             System.out.println("\t" + "\t" + legend[j]);
         }
         System.out.println("MOVES: ");
-        System.out.println("\t" + "\t" + "Use W (up), A (left) and D (right) to move.");
+        System.out.println("\t" + "\t" + "Use W (up), A (left) and D (right) to move. Use Q to quit.");
         System.out.println("\t" + "\t" + "(You must press enter after each move).");
     }
 
@@ -55,7 +55,7 @@ public class options {
     public String getUserInput(){
         Scanner enter = new Scanner(System.in);
         System.out.print("Enter your move [WASD?]: ");
-        return enter.nextLine();
+        return enter.nextLine().toLowerCase();
     }
 
 
