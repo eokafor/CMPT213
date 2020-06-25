@@ -2,6 +2,13 @@ package ca.cmpt213.a2.textui;
 
 import java.util.Scanner;
 
+/*
+AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
+AUTHOR:
+LAST MODIFIED DATE:
+DESCRIPTION: This options class is responsible for the menu options and header titles displayed on the game screen.
+ */
+
 public class options {
 
     private String title;
@@ -17,7 +24,6 @@ public class options {
         return this.legend;
     }
 
-
     private void printBarrier(int x){
         int j = x + 2;
         for(int i = 0; i < j; i++){
@@ -31,7 +37,6 @@ public class options {
         printBarrier(titleLen);
         System.out.println(counter + ")" + " " + title + " ");
         printBarrier(titleLen);
-
     }
 
     public void displayMainMenu(){
@@ -42,7 +47,7 @@ public class options {
             System.out.println("\t" + "\t" + legend[j]);
         }
         System.out.println("MOVES: ");
-        System.out.println("\t" + "\t" + "Use W (up), A (left) and D (right) to move. Use Q to quit.");
+        System.out.println("\t" + "\t" + "Use W (up), A (left), S(down) and D (right) to move. Use Q to quit.");
         System.out.println("\t" + "\t" + "(You must press enter after each move).");
     }
 
@@ -57,6 +62,5 @@ public class options {
         System.out.print("Enter your move [WASD?]: ");
         return enter.nextLine().toLowerCase();
     }
-
 
 }

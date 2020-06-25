@@ -5,6 +5,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
+/*
+AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
+AUTHOR:
+LAST MODIFIED DATE:
+DESCRIPTION:
+ */
+
+
 public class Explorer {
 
     Stack path=new Stack();

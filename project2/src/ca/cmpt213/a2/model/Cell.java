@@ -2,6 +2,14 @@ package ca.cmpt213.a2.model;
 
 import java.util.ArrayList;
 
+
+/*
+AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
+AUTHOR:
+LAST MODIFIED DATE:
+DESCRIPTION:
+ */
+
 public class Cell {
     public boolean visited;
     public boolean wall;

@@ -1,0 +1,8 @@
+Question 1: Explain how the board will be drawn?
+Answer:
+
+
+
+
+Question 2: How are the hero's movement handled?
+Answer:
