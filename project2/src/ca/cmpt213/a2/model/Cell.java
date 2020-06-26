@@ -1,7 +1,5 @@
 package ca.cmpt213.a2.model;
-
 import java.util.ArrayList;
-
 
 /*
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
@@ -20,7 +18,6 @@ public class Cell {
     public int tracker;
     public ArrayList<Cell> neighbours;
 
-
     public Cell(){
         this.visited=false;
         this.wall = true;
@@ -31,7 +28,4 @@ public class Cell {
         tracker=-1;
         neighbours=new ArrayList<Cell>();
     }
-
-
-
 }

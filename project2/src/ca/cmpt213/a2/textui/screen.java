@@ -22,6 +22,9 @@ public class screen {
     private static final String[] MENU = {"#: Wall", "@: You (a hero)", "!: Monster", "$: Power", ".: Unexplored space"};
 
     static graph game = new graph();
+    static display fullMaze = new display();
+    static motion move = new motion();
+    static motionGraph draw = new motionGraph();
     static boolean alreadyIn = true;
     static int taken = 0;
     static int stayed = 3;
@@ -29,7 +32,7 @@ public class screen {
     public static void main(String[] args) {
         int counter = 1;
         int demons = 3;
-        //int ability = 1;
+        int ability = 1;
         //String x;
         options menu = new options(HEADER, MENU);
         menu.displayTitle(counter);
@@ -45,7 +48,7 @@ public class screen {
                     menu = new options(HEADER1, MENU);
                     menu.displayTitle(counter);
                     System.out.println();
-                    game.displayGraph();
+                    fullMaze.displayGraph();
                     System.out.println();
                     menu.displayOptions(demons, taken, stayed);
                     break;
@@ -54,43 +57,56 @@ public class screen {
                     menu = new options(HEADER3, MENU);
                     menu.displayTitle(counter);
                     menu.displayMainMenu();
-                    game.motionGraph();
+                    draw.moveGraph();
                     menu.displayOptions(demons, taken, stayed);
                     break;
                 case "c":
                     counter++;
                     menu = new options(HEADER7, MENU);
                     menu.displayTitle(counter);
-                    menu.displayOptions(demons, taken, stayed);
-                    game.motionGraph();
+                    draw.moveGraph();
+                    menu.displayOptions(ability, taken, stayed);
+                    stayed = 1;
                     break;
                 case "w":
                     int a = 1;
                     moveUp(a);
-                    game.motionGraph();
-                    menu.displayOptions(demons, taken, stayed);
+                    if(alreadyIn == true)
+                    {
+                        draw.moveGraph();
+                        menu.displayOptions(demons, taken, stayed);
+                    }
                     break;
                 case "a":
                     int b = 2;
                     moveLeft(b);
-                    game.motionGraph();
-                    menu.displayOptions(demons, taken, stayed);
+                    if(alreadyIn == true)
+                    {
+                        draw.moveGraph();
+                        menu.displayOptions(demons, taken, stayed);
+                    }
                     break;
                 case "s":
                     int c = 3;
                     moveDown(c);
-                    game.motionGraph();
-                    menu.displayOptions(demons, taken, stayed);
+                    if(alreadyIn == true)
+                    {
+                        draw.moveGraph();
+                        menu.displayOptions(demons, taken, stayed);
+                    }
                     break;
                 case "d":
                     int d = 4;
                     moveRight(d);
-                    game.motionGraph();
-                    menu.displayOptions(demons, taken, stayed);
+                    if(alreadyIn == true)
+                    {
+                        draw.moveGraph();
+                        menu.displayOptions(demons, taken, stayed);
+                    }
                     break;
                 case "q":
                     end();
-                    game.displayGraph();
+                    fullMaze.displayGraph();
                     counter = 0;
                     break;
                 default:
@@ -101,22 +117,27 @@ public class screen {
     }
 
     private static void moveUp(int s) {
-        int d = game.motion(s);
+        int d = move.movement(s);
         if (d == 1){
             System.out.println("Invalid move: you cannot move through walls");
+            System.out.println();
         }
         else if(d == 2)
         {
             if(taken == 0)
             {
+                System.out.println();
+                fullMaze.displayGraph();
+                System.out.println();
                 System.out.println("Im sorry, you've been eaten!");
-                game.displayGraph();
                 end();
             }
-            else if(stayed == 0)
+            else if(stayed == 1)
             {
-                System.out.println("Congratulations! You've killed all monsters.");
-                game.displayGraph();
+                System.out.println();
+                fullMaze.displayGraph();
+                System.out.println();
+                System.out.println("Congratulations! You've Won.");
                 end();
             }
             else
@@ -136,13 +157,13 @@ public class screen {
             if(taken == 0)
             {
                 System.out.println("Im sorry, you've been eaten!");
-                game.displayGraph();
+                fullMaze.displayGraph();
                 end();
             }
-            else if(stayed == 0)
+            else if(stayed == 1)
             {
-                System.out.println("Congratulations! You've killed all monsters.");
-                game.displayGraph();
+                System.out.println("Congratulations! You've Won.");
+                fullMaze.displayGraph();
                 end();
             }
             else
@@ -154,7 +175,7 @@ public class screen {
     }
 
     private static void moveLeft(int q) {
-        int d = game.motion(q);
+        int d = move.movement(q);
         if (d == 1){
             System.out.println("Invalid move: you cannot move through walls");
         }
@@ -162,19 +183,22 @@ public class screen {
         {
             if(taken == 0)
             {
+                System.out.println();
+                fullMaze.displayGraph();
                 System.out.println("Im sorry, you've been eaten!");
-                game.displayGraph();
                 end();
             }
-            else if(stayed == 0)
+            else if(stayed == 1)
             {
-                System.out.println("Congratulations! You've killed all monsters.");
-                game.displayGraph();
+                System.out.println();
+                fullMaze.displayGraph();
+                System.out.println("Congratulations! You've Won.");
                 end();
             }
             else
             {
                 System.out.println("You've killed a monster!");
+                System.out.println();
                 taken--;
                 stayed--;
             }
@@ -182,6 +206,7 @@ public class screen {
         else if(d == 3)
         {
             System.out.println("You've grabbed a power!");
+            System.out.println();
             taken++;
         }
         else if(d == 4)
@@ -189,13 +214,13 @@ public class screen {
             if(taken == 0)
             {
                 System.out.println("Im sorry, you've been eaten!");
-                game.displayGraph();
+                fullMaze.displayGraph();
                 end();
             }
-            else if(stayed == 0)
+            else if(stayed == 1)
             {
-                System.out.println("Congratulations! You've killed all monsters.");
-                game.displayGraph();
+                System.out.println("Congratulations! You've Won.");
+                fullMaze.displayGraph();
                 end();
             }
             else
@@ -207,7 +232,7 @@ public class screen {
     }
 
     private static void moveDown(int v) {
-        int d = game.motion(v);
+        int d = move.movement(v);
         if (d == 1){
             System.out.println("Invalid move: you cannot move through walls");
         }
@@ -216,13 +241,13 @@ public class screen {
             if(taken == 0)
             {
                 System.out.println("Im sorry, you've been eaten!");
-                game.displayGraph();
+                fullMaze.displayGraph();
                 end();
             }
-            else if(stayed == 0)
+            else if(stayed == 1)
             {
-                System.out.println("Congratulations! You've killed all monsters.");
-                game.displayGraph();
+                System.out.println("Congratulations! You've Won.");
+                fullMaze.displayGraph();
                 end();
             }
             else
@@ -242,13 +267,13 @@ public class screen {
             if(taken == 0)
             {
                 System.out.println("Im sorry, you've been eaten!");
-                game.displayGraph();
+                fullMaze.displayGraph();
                 end();
             }
-            else if(stayed == 0)
+            else if(stayed == 1)
             {
-                System.out.println("Congratulations! You've killed all monsters.");
-                game.displayGraph();
+                System.out.println("Congratulations! You've Won.");
+                fullMaze.displayGraph();
                 end();
             }
             else
@@ -260,7 +285,7 @@ public class screen {
     }
 
     private static void moveRight(int o) {
-        int d = game.motion(o);
+        int d = move.movement(o);
         if (d == 1){
             System.out.println("Invalid move: you cannot move through walls");
         }
@@ -269,13 +294,13 @@ public class screen {
             if(taken == 0)
             {
                 System.out.println("Im sorry, you've been eaten!");
-                game.displayGraph();
+                fullMaze.displayGraph();
                 end();
             }
-            else if(stayed == 0)
+            else if(stayed == 1)
             {
-                System.out.println("Congratulations! You've killed all monsters.");
-                game.displayGraph();
+                System.out.println("Congratulations! You've Won.");
+                fullMaze.displayGraph();
                 end();
             }
             else
@@ -295,13 +320,13 @@ public class screen {
             if(taken == 0)
             {
                 System.out.println("Im sorry, you've been eaten!");
-                game.displayGraph();
+                fullMaze.displayGraph();
                 end();
             }
-            else if(stayed == 0)
+            else if(stayed == 1)
             {
-                System.out.println("Congratulations! You've killed all monsters.");
-                game.displayGraph();
+                System.out.println("Congratulations! You've Won.");
+                fullMaze.displayGraph();
                 end();
             }
             else

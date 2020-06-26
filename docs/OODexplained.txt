@@ -5,4 +5,4 @@ Answer:
 
 
 Question 2: How are the hero's movement handled?
-Answer:
+Answer: The hero's movement are handled using switch statements in the screen.java class. When the user enters either WASD, an integer number is passed into a respective function which decides how the game reacts to the movement.

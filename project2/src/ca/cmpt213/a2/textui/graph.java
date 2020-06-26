@@ -9,22 +9,23 @@ import java.util.Random;
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
 AUTHOR:
 LAST MODIFIED DATE:
-DESCRIPTION: This graph class is responsible for printing out the respective game maze based on certain conditions like if the game is initially started, if the user wants to see the full maze with no hidden cells and if the user moves throught the maze.
+DESCRIPTION: This graph class is responsible for printing the maze initially when the game starts and initializes cells where needed
  */
 
 public class graph {
 
-    maze grid;
+    static maze grid;
     int cols;
     int rows;
     Cell newCell;
-    int w = 0; //temp x value
-    int h = 0; //temp y value
-    int e = 0; //buffer for x value
-    int f = 0; //buffer for y value
-    int life = 0; //counter for the power in maze
-    int t = 0; //global x value for power while loop
-    int v = 0; //global y value for power while loop
+    static int w = 0; //temp x value
+    static int h = 0; //temp y value
+    static int e = 0; //buffer for x value
+    static int f = 0; //buffer for y value
+    static int life = 0; //counter for the power in maze
+    static int t = 0; //global x value for power while loop
+    static int v = 0; //global y value for power while loop
+
 
     public graph() {
         grid = new maze();
@@ -32,13 +33,73 @@ public class graph {
         rows = grid.getNUM_ROWS();
     }
 
+    public static maze getGrid() {
+        return grid;
+    }
+
+    public static int getW() {
+        return w;
+    }
+
+    public static void setW(int w) {
+        graph.w = w;
+    }
+
+    public static int getH() {
+        return h;
+    }
+
+    public static void setH(int h) {
+        graph.h = h;
+    }
+
+    public static int getE() {
+        return e;
+    }
+
+    public static void setE(int e) {
+        graph.e = e;
+    }
+
+    public static int getF() {
+        return f;
+    }
+
+    public static void setF(int f) {
+        graph.f = f;
+    }
+
+    public static int getT() {
+        return t;
+    }
+
+    public static void setT(int t) {
+        graph.t = t;
+    }
+
+    public static int getV() {
+        return v;
+    }
+
+    public static void setV(int v) {
+        graph.v = v;
+    }
+
+    public static int getLife() {
+        return life;
+    }
+
+    public static void setLife(int life) {
+        graph.life = life;
+    }
+
     public void newGraph(){ //default graph shown at the start of the game
         int num = 0;
         int p = 0;
         int l = 0;
         while(num != 1){
-            p = generateX();
-            l = generateY();
+            p = generateX(rows-1);
+            l = generateY(cols-1);
             boolean see = checkXY(p,l);
             if(see == false){
                 num = 1;
@@ -138,10 +199,27 @@ public class graph {
             System.out.print("#\t");
         }
         System.out.println();
-
     }
 
-    public void displayGraph(){ //displays the entire graph with walls and spaces
+    public static int generateX(int a){
+        Random rand = new Random();
+        return rand.nextInt(a);
+    }
+
+    public static int generateY(int b){
+        Random rand = new Random();
+        return rand.nextInt(b);
+    }
+
+    public boolean checkXY(int a, int b){
+        newCell = grid.getCell(a,b);
+        if(newCell.wall == true){
+            return true;
+        }
+        return false;
+    }
+
+    /*public void displayGraph(){ //displays the entire graph with walls and spaces
         for(int x = 0; x < cols+2; x++){
             System.out.print("#\t");
         }
@@ -181,9 +259,9 @@ public class graph {
             System.out.print("#\t");
         }
         System.out.println();
-    }
+    }*/
 
-    public void checkGraph(){ //checks all 8 neighbouring cell to the hero cell
+    /*public void checkGraph(){ //checks all 8 neighbouring cell to the hero cell
         for(int x = 0; x < rows; x++) {
             for (int y = 0; y < cols; y++) {
                 newCell = grid.getCell(x, y);
@@ -206,9 +284,9 @@ public class graph {
                 }
             }
         }
-    }
+    }*/
 
-    public void motionGraph(){ //graph shown when the hero is moved in the game
+    /*public void motionGraph(){ //graph shown when the hero is moved in the game
         for(int x = 0; x < cols+2; x++){
             System.out.print("#\t");
         }
@@ -266,40 +344,21 @@ public class graph {
             System.out.print("#\t");
         }
         System.out.println();
-    }
+    }*/
 
-    public int generateX(){
-        Random rand = new Random();
-        int xbound = 17;
-        //int u = rand.nextInt(xbound);
-        return rand.nextInt(xbound);
-    }
 
-    public int generateY(){
-        Random rand = new Random();
-        int ybound = 12;
-        //int r = rand.nextInt(ybound);
-        return rand.nextInt(ybound);
-    }
 
-    public boolean checkXY(int a, int b){
-        newCell = grid.getCell(a,b);
-        if(newCell.wall == true){
-            return true;
-        }
-        return false;
-    }
-
-    public boolean modifyXY(int a, int b){
+    /*public boolean modifyXY(int a, int b){
         newCell = grid.getCell(a,b);
         if((newCell.wall == true) || (newCell.hero == true)){
             return true;
         }
         return false;
-    }
+    }*/
 
-    public int motion(int j){
+    /*public int motion(int j){
         int counter = 0;
+
         if(j == 1)
         {
             int k = 0;
@@ -321,8 +380,8 @@ public class graph {
                 newCell.hero = true;
                 life = 0;
                 while(counter != 1){
-                    t = generateX();
-                    v = generateY();
+                    t = generateX(rows-1);
+                    v = generateY(cols-1);
                     boolean see = modifyXY(t,v);
                     if(see == false){
                         counter = 1;
@@ -340,8 +399,9 @@ public class graph {
                 checkGraph();
                 return 4;
             }
-            else if(newCell.monster == true)
+            else if((newCell.monster == true))
             {
+                int verify = 0;
                 newCell.hero = true;
                 e = k;
                 f = h;
@@ -359,8 +419,8 @@ public class graph {
                 newCell.hero = true;
                 life = 0;
                 while(counter != 1){
-                    t = generateX();
-                    v = generateY();
+                    t = generateX(rows-1);
+                    v = generateY(cols-1);
                     boolean see = modifyXY(t,v);
                     if(see == false){
                         counter = 1;
@@ -410,16 +470,16 @@ public class graph {
                 newCell.hero = true;
                 life = 0;
                 while(counter != 1){
-                    t = generateX();
-                    v = generateY();
+                    t = generateX(rows-1);
+                    v = generateY(cols-1);
                     boolean see = modifyXY(t,v);
                     if(see == false){
                         counter = 1;
                     }
                 }
                 counter = 0;
-                e = k;
-                f = h;
+                e = w;
+                f = k;
                 newCell.monster = false;
                 //newCell.power = false;
                 newCell = grid.getCell(w,h);
@@ -448,8 +508,8 @@ public class graph {
                 newCell.hero = true;
                 life = 0;
                 while(counter != 1){
-                    t = generateX();
-                    v = generateY();
+                    t = generateX(rows-1);
+                    v = generateY(cols-1);
                     boolean see = modifyXY(t,v);
                     if(see == false){
                         counter = 1;
@@ -499,8 +559,8 @@ public class graph {
                 newCell.hero = true;
                 life = 0;
                 while(counter != 1){
-                    t = generateX();
-                    v = generateY();
+                    t = generateX(rows-1);
+                    v = generateY(cols-1);
                     boolean see = modifyXY(t,v);
                     if(see == false){
                         counter = 1;
@@ -538,8 +598,8 @@ public class graph {
                 newCell.hero = true;
                 life = 0;
                 while(counter != 1){
-                    t = generateX();
-                    v = generateY();
+                    t = generateX(rows-1);
+                    v = generateY(cols-1);
                     boolean see = modifyXY(t,v);
                     if(see == false){
                         counter = 1;
@@ -589,16 +649,16 @@ public class graph {
                 newCell.hero = true;
                 life = 0;
                 while(counter != 1){
-                    t = generateX();
-                    v = generateY();
+                    t = generateX(rows-1);
+                    v = generateY(cols-1);
                     boolean see = modifyXY(t,v);
                     if(see == false){
                         counter = 1;
                     }
                 }
                 counter = 0;
-                e = k;
-                f = h;
+                e = w;
+                f = k;
                 newCell.monster = false;
                 //newCell.power = false;
                 newCell = grid.getCell(w,h);
@@ -627,8 +687,8 @@ public class graph {
                 newCell.hero = true;
                 life = 0;
                 while(counter != 1){
-                    t = generateX();
-                    v = generateY();
+                    t = generateX(rows-1);
+                    v = generateY(cols-1);
                     boolean see = modifyXY(t,v);
                     if(see == false){
                         counter = 1;
@@ -658,5 +718,5 @@ public class graph {
             }
         }
         return 0;
-    }
+    }*/
 }
