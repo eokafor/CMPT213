@@ -6,7 +6,7 @@ import ca.cmpt213.a2.model.maze;
 /*
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
 AUTHOR:
-LAST MODIFIED DATE:
+LAST MODIFIED DATE: 26/06/2020
 DESCRIPTION: This graph class is responsible for printing out the resulting graph when the user has made a movement. i.e. WASD
  */
 

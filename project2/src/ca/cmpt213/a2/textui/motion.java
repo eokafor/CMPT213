@@ -6,7 +6,7 @@ import ca.cmpt213.a2.model.maze;
 /*
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
 AUTHOR:
-LAST MODIFIED DATE:
+LAST MODIFIED DATE: 26/06/2020
 DESCRIPTION: This motion class is responsible for the movement of the hero and reaction to certain conditions like when the hero is killed or the hero grabs a power
  */
 
@@ -16,12 +16,13 @@ public class motion {
     Cell tempCell;
     int cols, rows;
     int x1, x2, y1, y2, num, tempE, tempF;
-
+    monsters chime;
     public motion()
     {
         myGraph = graph.getGrid();
         cols = myGraph.getNUM_COLS();
         rows = myGraph.getNUM_ROWS();
+        chime = new monsters();
     }
 
     public int movement(int j){
@@ -111,6 +112,7 @@ public class motion {
                 tempF = graph.getF();
                 graph.setW(tempE);
                 graph.setH(tempF);
+                chime.moveMonsters();
                 check.checkGraph();
                 return 3;
             }
@@ -125,6 +127,7 @@ public class motion {
                 tempF = graph.getF();
                 graph.setW(tempE);
                 graph.setH(tempF);
+                chime.moveMonsters();
                 check.checkGraph();
                 return 0;
             }
@@ -150,7 +153,6 @@ public class motion {
             else if ((tempCell.monster == true) && (tempCell.power == true))
             {
                 tempCell.hero = true;
-                //life = 0;
                 graph.setLife(0);
                 while(counter != 1){
                     y1 = graph.generateX(rows-1);
@@ -210,6 +212,7 @@ public class motion {
                 tempF = graph.getF();
                 graph.setW(tempE);
                 graph.setH(tempF);
+                chime.moveMonsters();
                 check.checkGraph();
                 return 3;
             }
@@ -224,6 +227,7 @@ public class motion {
                 tempF = graph.getF();
                 graph.setW(tempE);
                 graph.setH(tempF);
+                chime.moveMonsters();
                 check.checkGraph();
                 return 0;
             }
@@ -309,6 +313,7 @@ public class motion {
                 tempF = graph.getF();
                 graph.setW(tempE);
                 graph.setH(tempF);
+                chime.moveMonsters();
                 check.checkGraph();
                 return 3;
             }
@@ -323,6 +328,7 @@ public class motion {
                 tempF = graph.getF();
                 graph.setW(tempE);
                 graph.setH(tempF);
+                chime.moveMonsters();
                 check.checkGraph();
                 return 0;
             }
@@ -349,7 +355,6 @@ public class motion {
             {
                 tempCell.hero = true;
                 graph.setLife(0);
-                //life = 0;
                 while(counter != 1){
                     y1 = graph.generateX(rows-1);
                     y2 = graph.generateY(cols-1);
@@ -408,6 +413,7 @@ public class motion {
                 tempF = graph.getF();
                 graph.setW(tempE);
                 graph.setH(tempF);
+                chime.moveMonsters();
                 check.checkGraph();
                 return 3;
             }
@@ -422,6 +428,7 @@ public class motion {
                 tempF = graph.getF();
                 graph.setW(tempE);
                 graph.setH(tempF);
+                chime.moveMonsters();
                 check.checkGraph();
                 return 0;
             }

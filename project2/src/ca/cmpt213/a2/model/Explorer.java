@@ -8,7 +8,7 @@ import java.util.Stack;
 /*
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
 AUTHOR:
-LAST MODIFIED DATE:
+LAST MODIFIED DATE: 26/06/2020
 DESCRIPTION:
  */
 
@@ -25,11 +25,22 @@ public class Explorer {
         this.cells=cells;
         pathexplorer();
 
-        removeOpenCells();
-        removeLockedCells();
+        CornerCleaner();
 
+        removeLockedCells();
+        removeOpenCells();
         CornerCleaner();
         openPath();
+
+
+
+
+
+
+
+
+
+
 
     }
 
@@ -47,7 +58,7 @@ public class Explorer {
                     current.wall=false;
                     neighbour.visited=true;
                     path.push(neighbour);
-                    break;
+
 
                 }
             }
@@ -56,25 +67,46 @@ public class Explorer {
     private void removeOpenCells(){
         for(int i=0;i<18;i++){
             for(int j=0;j<13;j++){
-                if(cells[i][j].wall==false){
+                if(!cells[i][j].wall){
                     boolean neighbourWall=false;
+                    int cnt=0;
+                    if(i>0){
+                        if(cells[i-1][j].wall){
+                            cnt++;
+                        }
+                    }
+                    if(j>0){
+                        if(cells[i][j-1].wall){
+                            cnt++;
+                        }
+                    }
+                    if(i>0&&j>0){
+                        if(cells[i-1][j-1].wall){
+                            cnt++;
+                        }
+                    }
                     if(j<12){
-                        if(cells[i][j+1].wall==true){
+                        if(cells[i][j+1].wall){
                             neighbourWall=true;
                         }
                     }
                     if(i<17){
-                        if(cells[i+1][j].wall==true){
+                        if(cells[i+1][j].wall){
                             neighbourWall=true;
                         }
                     }
                     if(i<17&&j<12){
-                        if(cells[i+1][j+1].wall==true){
+                        if(cells[i+1][j+1].wall){
                             neighbourWall=true;
                         }
                     }
-                    if (neighbourWall==false){
-                        cells[i][j].wall=true;
+                    if (!neighbourWall){
+                        if(cnt!=3) {
+                            cells[i][j].wall = true;
+                        }
+                        if(cnt==3&&i<17){
+                            cells[i+1][j].wall = true;
+                        }
                     }
                 }
             }
@@ -101,12 +133,13 @@ public class Explorer {
                             neighbourWall=false;
                         }
                     }
-                    if (neighbourWall==true){
+                    if (neighbourWall){
                         cells[i][j].wall=false;
                     }
                 }
             }
         }
+
     }
     private void CornerCleaner(){
         cells[0][0].wall=false;
@@ -148,10 +181,11 @@ public class Explorer {
                 for (int j = 0; j < 13; j++) {
                     Cell newCurrent = cells[i][j];
                     if (newCurrent.tracker == 0) {
-                        bfs(newCurrent);
+
                         for (Cell neighbour : newCurrent.neighbours) {
-                            if (neighbour.wall == true) {
+                            if (neighbour.wall&&!checkOpenBlock(neighbour) ) {
                                 neighbour.wall = false;
+                                bfs(newCurrent);
                                 break;
                             }
                         }
@@ -163,14 +197,122 @@ public class Explorer {
             bfs(cells[0][0]);
             for (int i = 0; i < 18; i++) {
                 for (int j = 0; j < 13; j++) {
-                 if(cells[i][j].tracker==0)
-                     repeat=true;
+                    if(cells[i][j].tracker==0)
+                        repeat=true;
 
                 }
-                }
-            //removeOpenCells();
+            }
+
+
 
         }while(repeat);
+
+
+        CornerCleaner();
+    }
+    private boolean checkOpenBlock(Cell current){
+        int i,j;
+        i=current.i;
+        j=current.j;
+        boolean check=true;
+        if(i>0&&j>0){
+            if(cells[i-1][j-1].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(i>0){
+            if(cells[i-1][j].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(j>0){
+            if(cells[i][j-1].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(check)
+            return true;
+
+        if(i>0&&j<12){
+            if(cells[i-1][j+1].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(i>0){
+            if(cells[i-1][j].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(j<12){
+            if(cells[i][j+1].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(check)
+            return true;
+
+        if(i<17&&j>0){
+            if(cells[i+1][j-1].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(i<17){
+            if(cells[i+1][j].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(j>0){
+            if(cells[i][j-1].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(check)
+            return true;
+
+        if(i<17&&j<12){
+            if(cells[i+1][j+1].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(i<17){
+            if(cells[i+1][j].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(j<12){
+            if(cells[i][j+1].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(check)
+            return true;
+
+
+        return false;
 
     }
 }

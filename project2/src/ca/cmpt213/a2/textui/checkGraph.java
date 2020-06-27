@@ -6,8 +6,8 @@ import ca.cmpt213.a2.model.maze;
 /*
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
 AUTHOR:
-LAST MODIFIED DATE:
-DESCRIPTION: This checkGraph class reveals all the cells surrounding the hero cell when the hero moves through the game.
+LAST MODIFIED DATE: 26/06/2020
+DESCRIPTION: This checkGraph class reveals all the 8 cells surrounding the hero cell when the hero moves through the game.
  */
 
 public class checkGraph {

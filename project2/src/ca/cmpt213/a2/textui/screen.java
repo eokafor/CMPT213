@@ -1,22 +1,16 @@
 package ca.cmpt213.a2.textui;
 
-//import java.util.Scanner;
-
 /*
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
 AUTHOR:
-LAST MODIFIED DATE:
+LAST MODIFIED DATE: 26/06/2020
 DESCRIPTION: This screen class is the main class responsible for handling interactivity with the user. It displays the graph to user gotten from the graph class and decides which function to run based on user input.
  */
 
 public class screen {
     private static final String HEADER = " Start  ";
     private static final String HEADER1 = " Map Reveal  ";
-    //private static final String HEADER2 = " Illegal Move  ";
     private static final String HEADER3 = " Help Menu  ";
-    //private static final String HEADER4 = " Grabbing a power  ";
-    //private static final String HEADER5 = " Kill a monster  ";
-    //private static final String HEADER6 = " Getting killed/eaten by a monster  ";
     private static final String HEADER7 = " Cheat code  ";
 
     private static final String[] MENU = {"#: Wall", "@: You (a hero)", "!: Monster", "$: Power", ".: Unexplored space"};
@@ -28,12 +22,11 @@ public class screen {
     static boolean alreadyIn = true;
     static int taken = 0;
     static int stayed = 3;
+    static int ability = 0;
     static String input = "";
     public static void main(String[] args) {
         int counter = 1;
         int demons = 3;
-        int ability = 1;
-        //String x;
         options menu = new options(HEADER, MENU);
         menu.displayTitle(counter);
         menu.displayMainMenu();
@@ -57,16 +50,21 @@ public class screen {
                     menu = new options(HEADER3, MENU);
                     menu.displayTitle(counter);
                     menu.displayMainMenu();
+                    System.out.println();
                     draw.moveGraph();
+                    System.out.println();
                     menu.displayOptions(demons, taken, stayed);
                     break;
                 case "c":
                     counter++;
                     menu = new options(HEADER7, MENU);
                     menu.displayTitle(counter);
+                    System.out.println();
                     draw.moveGraph();
-                    menu.displayOptions(ability, taken, stayed);
-                    stayed = 1;
+                    System.out.println();
+                    demons = 1;
+                    menu.displayOptions(demons, taken, stayed);
+                    ability = 1;
                     break;
                 case "w":
                     int a = 1;
@@ -74,6 +72,7 @@ public class screen {
                     if(alreadyIn == true)
                     {
                         draw.moveGraph();
+                        System.out.println();
                         menu.displayOptions(demons, taken, stayed);
                     }
                     break;
@@ -83,6 +82,7 @@ public class screen {
                     if(alreadyIn == true)
                     {
                         draw.moveGraph();
+                        System.out.println();
                         menu.displayOptions(demons, taken, stayed);
                     }
                     break;
@@ -92,6 +92,7 @@ public class screen {
                     if(alreadyIn == true)
                     {
                         draw.moveGraph();
+                        System.out.println();
                         menu.displayOptions(demons, taken, stayed);
                     }
                     break;
@@ -101,6 +102,7 @@ public class screen {
                     if(alreadyIn == true)
                     {
                         draw.moveGraph();
+                        System.out.println();
                         menu.displayOptions(demons, taken, stayed);
                     }
                     break;
@@ -132,7 +134,7 @@ public class screen {
                 System.out.println("Im sorry, you've been eaten!");
                 end();
             }
-            else if(stayed == 1)
+            else if((stayed == 1)||(ability == 1))
             {
                 System.out.println();
                 fullMaze.displayGraph();
@@ -160,7 +162,7 @@ public class screen {
                 fullMaze.displayGraph();
                 end();
             }
-            else if(stayed == 1)
+            else if((stayed == 1)||(ability == 1))
             {
                 System.out.println("Congratulations! You've Won.");
                 fullMaze.displayGraph();
@@ -188,7 +190,7 @@ public class screen {
                 System.out.println("Im sorry, you've been eaten!");
                 end();
             }
-            else if(stayed == 1)
+            else if((stayed == 1)||(ability == 1))
             {
                 System.out.println();
                 fullMaze.displayGraph();
@@ -217,7 +219,7 @@ public class screen {
                 fullMaze.displayGraph();
                 end();
             }
-            else if(stayed == 1)
+            else if((stayed == 1)||(ability == 1))
             {
                 System.out.println("Congratulations! You've Won.");
                 fullMaze.displayGraph();
@@ -244,7 +246,7 @@ public class screen {
                 fullMaze.displayGraph();
                 end();
             }
-            else if(stayed == 1)
+            else if((stayed == 1)||(ability == 1))
             {
                 System.out.println("Congratulations! You've Won.");
                 fullMaze.displayGraph();
@@ -270,7 +272,7 @@ public class screen {
                 fullMaze.displayGraph();
                 end();
             }
-            else if(stayed == 1)
+            else if((stayed == 1)||(ability == 1))
             {
                 System.out.println("Congratulations! You've Won.");
                 fullMaze.displayGraph();
@@ -297,7 +299,7 @@ public class screen {
                 fullMaze.displayGraph();
                 end();
             }
-            else if(stayed == 1)
+            else if((stayed == 1)||(ability == 1))
             {
                 System.out.println("Congratulations! You've Won.");
                 fullMaze.displayGraph();
@@ -323,7 +325,7 @@ public class screen {
                 fullMaze.displayGraph();
                 end();
             }
-            else if(stayed == 1)
+            else if((stayed == 1)||(ability == 1))
             {
                 System.out.println("Congratulations! You've Won.");
                 fullMaze.displayGraph();

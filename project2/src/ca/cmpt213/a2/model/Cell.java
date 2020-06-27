@@ -4,27 +4,33 @@ import java.util.ArrayList;
 /*
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
 AUTHOR:
-LAST MODIFIED DATE:
+LAST MODIFIED DATE: 26/06/2020
 DESCRIPTION:
  */
 
 public class Cell {
     public boolean visited;
+    public int i;
+    public int j;
     public boolean wall;
     public boolean reveal;
     public boolean power ;
     public boolean monster;
     public boolean hero;
     public int tracker;
+    public boolean here;
     public ArrayList<Cell> neighbours;
 
-    public Cell(){
+    public Cell(int i,int j){
+        this.i=i;
+        this.j=j;
         this.visited=false;
         this.wall = true;
         this.hero = false;
         this.reveal = false;
         this.power = false;
         this.monster = false;
+        this.here = false;
         tracker=-1;
         neighbours=new ArrayList<Cell>();
     }

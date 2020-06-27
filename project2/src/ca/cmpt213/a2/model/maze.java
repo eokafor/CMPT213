@@ -4,7 +4,7 @@ import java.util.Random;
 /*
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
 AUTHOR:
-LAST MODIFIED DATE:
+LAST MODIFIED DATE: 26/06/2020
 DESCRIPTION:
  */
 
@@ -23,7 +23,7 @@ public class maze {
 
         for(int i=0;i<NUM_ROWS;i++) {
             for (int j = 0; j <NUM_COLS; j++) {
-                cell[i][j]= new Cell();
+                cell[i][j]= new Cell(i,j);
             }
         }
         for(int i=0;i<NUM_ROWS;i++) {
