@@ -41,6 +41,7 @@ public class Explorer {
 
 
 
+
     }
 
 
@@ -180,10 +181,11 @@ public class Explorer {
                 for (int j = 0; j < 13; j++) {
                     Cell newCurrent = cells[i][j];
                     if (newCurrent.tracker == 0) {
-                        bfs(newCurrent);
+
                         for (Cell neighbour : newCurrent.neighbours) {
-                            if (neighbour.wall == true) {
+                            if (neighbour.wall&&!checkOpenBlock(neighbour) ) {
                                 neighbour.wall = false;
+                                bfs(newCurrent);
                                 break;
                             }
                         }
@@ -207,5 +209,110 @@ public class Explorer {
 
 
         CornerCleaner();
+    }
+    private boolean checkOpenBlock(Cell current){
+        int i,j;
+        i=current.i;
+        j=current.j;
+        boolean check=true;
+        if(i>0&&j>0){
+            if(cells[i-1][j-1].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(i>0){
+            if(cells[i-1][j].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(j>0){
+            if(cells[i][j-1].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(check)
+            return true;
+
+        if(i>0&&j<12){
+            if(cells[i-1][j+1].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(i>0){
+            if(cells[i-1][j].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(j<12){
+            if(cells[i][j+1].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(check)
+            return true;
+
+        if(i<17&&j>0){
+            if(cells[i+1][j-1].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(i<17){
+            if(cells[i+1][j].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(j>0){
+            if(cells[i][j-1].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(check)
+            return true;
+
+        if(i<17&&j<12){
+            if(cells[i+1][j+1].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(i<17){
+            if(cells[i+1][j].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(j<12){
+            if(cells[i][j+1].wall)
+                check=false;
+        }
+        else{
+            check=false;
+        }
+        if(check)
+            return true;
+
+
+        return false;
+
     }
 }

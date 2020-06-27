@@ -23,7 +23,7 @@ public class maze {
 
         for(int i=0;i<NUM_ROWS;i++) {
             for (int j = 0; j <NUM_COLS; j++) {
-                cell[i][j]= new Cell();
+                cell[i][j]= new Cell(i,j);
             }
         }
         for(int i=0;i<NUM_ROWS;i++) {

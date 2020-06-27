@@ -10,6 +10,8 @@ DESCRIPTION:
 
 public class Cell {
     public boolean visited;
+    public int i;
+    public int j;
     public boolean wall;
     public boolean reveal;
     public boolean power ;
@@ -18,7 +20,9 @@ public class Cell {
     public int tracker;
     public ArrayList<Cell> neighbours;
 
-    public Cell(){
+    public Cell(int i,int j){
+        this.i=i;
+        this.j=j;
         this.visited=false;
         this.wall = true;
         this.hero = false;
