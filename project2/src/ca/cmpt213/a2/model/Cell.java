@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /*
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
 AUTHOR:
-LAST MODIFIED DATE: 26/06/2020
+LAST MODIFIED DATE:
 DESCRIPTION:
  */
 
@@ -18,7 +18,6 @@ public class Cell {
     public boolean monster;
     public boolean hero;
     public int tracker;
-    public boolean here;
     public ArrayList<Cell> neighbours;
 
     public Cell(int i,int j){
@@ -30,7 +29,6 @@ public class Cell {
         this.reveal = false;
         this.power = false;
         this.monster = false;
-        this.here = false;
         tracker=-1;
         neighbours=new ArrayList<Cell>();
     }

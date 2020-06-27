@@ -213,7 +213,7 @@ public class graph {
 
     public boolean checkXY(int a, int b){
         newCell = grid.getCell(a,b);
-        if(newCell.wall == true){
+        if((newCell.wall == true) || (newCell.hero == true)){
             return true;
         }
         return false;
