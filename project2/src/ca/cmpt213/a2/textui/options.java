@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /*
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
-AUTHOR:
+AUTHOR: Sukhwinder Singh (301368460) -sukhwind@sfu.ca
 LAST MODIFIED DATE:
 DESCRIPTION: This options class is responsible for the menu options and header titles displayed on the game screen.
  */

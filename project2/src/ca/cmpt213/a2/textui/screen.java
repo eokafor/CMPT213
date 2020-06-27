@@ -2,7 +2,7 @@ package ca.cmpt213.a2.textui;
 
 /*
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
-AUTHOR:
+AUTHOR: Sukhwinder Singh (301368460) -sukhwind@sfu.ca
 LAST MODIFIED DATE: 26/06/2020
 DESCRIPTION: This screen class is the main class responsible for handling interactivity with the user. It displays the graph to user gotten from the graph class and decides which function to run based on user input.
  */

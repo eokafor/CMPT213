@@ -3,9 +3,9 @@ import java.util.Random;
 
 /*
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
-AUTHOR:
+AUTHOR: Sukhwinder Singh (301368460) -sukhwind@sfu.ca
 LAST MODIFIED DATE: 26/06/2020
-DESCRIPTION:
+DESCRIPTION: Creates the double dimension array of cells for the board. Assign neighbours to the cells.
  */
 
 public class maze {

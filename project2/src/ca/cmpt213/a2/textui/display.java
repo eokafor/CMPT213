@@ -5,7 +5,7 @@ import ca.cmpt213.a2.model.maze;
 
 /*
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
-AUTHOR:
+AUTHOR: Sukhwinder Singh (301368460) -sukhwind@sfu.ca
 LAST MODIFIED DATE:
 DESCRIPTION: This display graph class is responsible for displaying the full maze with walls and spaces either when the game ends or the m key is pressed
  */

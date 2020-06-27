@@ -7,9 +7,10 @@ import java.util.Stack;
 
 /*
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
-AUTHOR:
+AUTHOR: Sukhwinder Singh (301368460) -sukhwind@sfu.ca
 LAST MODIFIED DATE: 26/06/2020
-DESCRIPTION:
+DESCRIPTION: Creates the maze using the rescursive backtracking. Remove 2*2 open and locked cells and then make all the
+        cells that are not wall accessible.
  */
 
 

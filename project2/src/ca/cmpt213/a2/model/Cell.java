@@ -3,9 +3,9 @@ import java.util.ArrayList;
 
 /*
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
-AUTHOR:
+AUTHOR: Sukhwinder Singh (301368460) -sukhwind@sfu.ca
 LAST MODIFIED DATE: 26/06/2020
-DESCRIPTION:
+DESCRIPTION: Cell class stores the information about the particular cell on the board.
  */
 
 public class Cell {

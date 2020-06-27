@@ -7,7 +7,7 @@ import java.util.Random;
 
 /*
 AUTHOR: OKAFOR EMMANUEL(301329115) - eokafor@sfu.ca
-AUTHOR:
+AUTHOR: Sukhwinder Singh (301368460) -sukhwind@sfu.ca
 LAST MODIFIED DATE: 26/06/2020
 DESCRIPTION: This graph class is responsible for printing the maze initially when the game starts and initializes cells where needed
  */
