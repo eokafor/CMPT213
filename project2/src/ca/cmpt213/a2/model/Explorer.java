@@ -25,11 +25,21 @@ public class Explorer {
         this.cells=cells;
         pathexplorer();
 
-        removeOpenCells();
-        removeLockedCells();
-
         CornerCleaner();
-        openPath();
+
+            removeLockedCells();
+            removeOpenCells();
+            CornerCleaner();
+            openPath();
+
+
+
+
+
+
+
+
+
 
     }
 
@@ -47,7 +57,7 @@ public class Explorer {
                     current.wall=false;
                     neighbour.visited=true;
                     path.push(neighbour);
-                    break;
+
 
                 }
             }
@@ -56,25 +66,46 @@ public class Explorer {
     private void removeOpenCells(){
         for(int i=0;i<18;i++){
             for(int j=0;j<13;j++){
-                if(cells[i][j].wall==false){
+                if(!cells[i][j].wall){
                     boolean neighbourWall=false;
+                    int cnt=0;
+                    if(i>0){
+                        if(cells[i-1][j].wall){
+                            cnt++;
+                        }
+                    }
+                    if(j>0){
+                        if(cells[i][j-1].wall){
+                            cnt++;
+                        }
+                    }
+                    if(i>0&&j>0){
+                        if(cells[i-1][j-1].wall){
+                            cnt++;
+                        }
+                    }
                     if(j<12){
-                        if(cells[i][j+1].wall==true){
+                        if(cells[i][j+1].wall){
                             neighbourWall=true;
                         }
                     }
                     if(i<17){
-                        if(cells[i+1][j].wall==true){
+                        if(cells[i+1][j].wall){
                             neighbourWall=true;
                         }
                     }
                     if(i<17&&j<12){
-                        if(cells[i+1][j+1].wall==true){
+                        if(cells[i+1][j+1].wall){
                             neighbourWall=true;
                         }
                     }
-                    if (neighbourWall==false){
-                        cells[i][j].wall=true;
+                    if (!neighbourWall){
+                        if(cnt!=3) {
+                            cells[i][j].wall = true;
+                        }
+                        if(cnt==3&&i<17){
+                            cells[i+1][j].wall = true;
+                        }
                     }
                 }
             }
@@ -101,12 +132,13 @@ public class Explorer {
                             neighbourWall=false;
                         }
                     }
-                    if (neighbourWall==true){
+                    if (neighbourWall){
                         cells[i][j].wall=false;
                     }
                 }
             }
         }
+
     }
     private void CornerCleaner(){
         cells[0][0].wall=false;
@@ -168,9 +200,12 @@ public class Explorer {
 
                 }
                 }
-            //removeOpenCells();
+
+
 
         }while(repeat);
 
+
+        CornerCleaner();
     }
 }
